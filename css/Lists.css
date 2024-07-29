@@ -67,3 +67,20 @@ legend {
     padding-left: 30%;
     padding-right: 30%;
 }
+
+#product-list {
+    list-style: none;
+}
+
+#product-list img {
+    max-height: 20em;
+    max-width: 20em;
+}
+
+#product-list p {
+    font-size: small;
+}
+
+#product-list li {
+    border-bottom: 0.0625em solid black;
+}
