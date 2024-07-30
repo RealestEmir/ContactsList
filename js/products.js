@@ -5,6 +5,9 @@ const productImage = document.getElementById("image");
 const productDescription = document.getElementById("description");
 const wishList = document.getElementById("product-list");
 
+const newList = document.getElementById("list");
+const listOfLists = document.getElementById("list-list");
+
 function addProduct(){
     if(productLink.value === '' || productName.value === '' || productPrice.value === '' || productImage.value === ''){
         alert("This field is required");
@@ -65,11 +68,30 @@ function removeAll(){
     saveData();
 }
 
+function addList(){
+    if(newList.value === ''){
+        alert("You must write something");
+    }
+    else{
+        let option = document.createElement("option");
+        option.textContent = newList.value;
+        listOfLists.appendChild(option);
+        saveData();
+        newList.value = "";
+    }
+}
+
 function saveData(){
-    localStorage.setItem("data", wishList.innerHTML);
+    localStorage.setItem("data1", wishList.innerHTML);
+    localStorage.setItem("data2", listOfLists.innerHTML);
 }
 
 function showTask(){
-    wishList.innerHTML = localStorage.getItem("data");
+    wishList.innerHTML = localStorage.getItem("data1");
+    listOfLists.innerHTML = localStorage.getItem("data2")
+
+    let all = document.createElement("option");
+    all.textContent = "All";
+    listOfLists.appendChild(all);
 }
 showTask();

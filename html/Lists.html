@@ -34,33 +34,23 @@
             </article>
         </div>
 
-        <div id="add-list">
+        <!---<div id="add-list">
             <article>
                 <a href="create-list.html">Click here to create a list</a>
             </article>
-        </div>
+        </div>--->
 
         <article>
             <form action="" id="Lists">
                 <fieldset>
                     <Legend>Lists</Legend>   
                     <label for="">Select List</label><br>
-                    <select name="" id="">
+                    <select name="list-list" id="list-list">
                         <option value="">All</option>
-                        <option value="">test 1</option>
-                        <option value="">test 2</option>
-                        <option value="">test 3</option>
                     </select><br>
 
                     <div class = "display-wishlist">
                         <ul id="product-list">
-                            <!---<li>
-                                <a href="https://www.cdkeys.com/elden-ring-shadow-of-the-erdtree-pc-dlc-steam-emea?__currency=gbp&utm_source=google&utm_medium=cpc&utm_impaffexcgoogle-23=true&gad_source=1">
-                                    <img src="/images/elden_ring_shadow_of_the_erdtree-steam.jpg" alt=""></a>
-                                <p>ELDEN RING SHADOW OF THE ERDTREE PC - DLC (EMEA)</p>
-                                <p>£25.79</p>
-                                <p>The Shadow of the Erdtree expansion features an all-new story set in the Land of Shadow imbued with mystery, perilous dungeons, and new enemies, weapons and equipment.</p>
-                            </li>--->
                         </ul>
                         <button onclick="removeAll()">Remove all</button>
                     </div>
@@ -80,6 +70,17 @@
                         <option value=""></option>
                     </select><br>--->
                     <button onclick="addProduct()">Add product</button><br>
+                </fieldset>
+            </form>
+        </article>
+
+        <article>
+            <form action="" id="Create-List">
+                <fieldset>
+                    <legend>Create a list</legend>
+                    <label for="">List name</label><br>
+                    <input type="text" name="list" id="list" placeholder="Enter name"><br>
+                    <button onclick="addList()">Add list</button><br>
                 </fieldset>
             </form>
         </article>
