@@ -75,10 +75,18 @@ function addList(){
     else{
         let option = document.createElement("option");
         option.textContent = newList.value;
+        option.value = newList.value;
         listOfLists.appendChild(option);
         saveData();
         newList.value = "";
     }
+}
+
+function removeLists(){
+    while (listOfLists.options.length > 0){
+        listOfLists.remove(0);
+    }
+    saveData();
 }
 
 function saveData(){
@@ -86,12 +94,22 @@ function saveData(){
     localStorage.setItem("data2", listOfLists.innerHTML);
 }
 
+function ensureAllOption(){
+    const option = listOfLists.options;
+    for (let i = 0; i < option.length; i++){
+        if(option[i].text == "All"){
+            return;
+        }
+    }
+
+    let allOption = document.createElement("option");
+    allOption.textContent = "All";
+    listOfLists.appendChild(allOption);
+}
+
 function showTask(){
     wishList.innerHTML = localStorage.getItem("data1");
-    listOfLists.innerHTML = localStorage.getItem("data2")
-
-    let all = document.createElement("option");
-    all.textContent = "All";
-    listOfLists.appendChild(all);
+    listOfLists.innerHTML = localStorage.getItem("data2");
+    ensureAllOption();
 }
 showTask();
