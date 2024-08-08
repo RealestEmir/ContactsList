@@ -3,13 +3,14 @@ const productName = document.getElementById("name");
 const productPrice = document.getElementById("price");
 const productImage = document.getElementById("image");
 const productDescription = document.getElementById("description");
+const productList = document.getElementById("list-belonging");
 const wishList = document.getElementById("product-list");
 
 const newList = document.getElementById("list");
 const listOfLists = document.getElementById("list-list");
 
 function addProduct(){
-    if(productLink.value === '' || productName.value === '' || productPrice.value === '' || productImage.value === ''){
+    if(productLink.value === '' || productName.value === '' || productPrice.value === '' || productImage.value === '' || productList.value === ''){
         alert("This field is required");
     }
     else{
@@ -19,6 +20,7 @@ function addProduct(){
 
             let li = document.createElement("li");
             li.innerHTML = "";
+            li.setAttribute("data-list", productList.value.toUpperCase());
 
             let a = document.createElement("a");
             a.href = productLink.value;
@@ -50,6 +52,34 @@ function addProduct(){
 
             wishList.appendChild(li);
 
+            if(newList.value === ''){
+                alert("You must write something");
+            }
+            else{
+                let listName = newList.value.toUpperCase();
+                let options = listOfLists.options;
+                let isDuplicate = false;
+        
+                for(let i = 0; i < options.length; i++){
+                    if(options[i].value == listName){
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+        
+                if(isDuplicate){
+                    alert("This list already exists");
+                }
+                else{
+                    let option = document.createElement("option");
+                    option.textContent = listName;
+                    option.value = listName;
+                    listOfLists.appendChild(option);
+                    saveData();
+                    newList.value = "";
+                }
+            }
+
             saveData();
 
             productLink.value = "";
@@ -57,6 +87,7 @@ function addProduct(){
             productPrice.value = "";
             productImage.value = "";
             productDescription.value = "";
+            productList.value = "";
 
         };
         reader.readAsDataURL(productImage.files[0]);   
@@ -73,12 +104,28 @@ function addList(){
         alert("You must write something");
     }
     else{
-        let option = document.createElement("option");
-        option.textContent = newList.value;
-        option.value = newList.value;
-        listOfLists.appendChild(option);
-        saveData();
-        newList.value = "";
+        let listName = newList.value.toUpperCase();
+        let options = listOfLists.options;
+        let isDuplicate = false;
+
+        for(let i = 0; i < options.length; i++){
+            if(options[i].value == listName){
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        if(isDuplicate){
+            alert("This list already exists");
+        }
+        else{
+            let option = document.createElement("option");
+            option.textContent = listName;
+            option.value = listName;
+            listOfLists.appendChild(option);
+            saveData();
+            newList.value = "";
+        }
     }
 }
 
@@ -97,13 +144,13 @@ function saveData(){
 function ensureAllOption(){
     const option = listOfLists.options;
     for (let i = 0; i < option.length; i++){
-        if(option[i].text == "All"){
+        if(option[i].text == "ALL"){
             return;
         }
     }
 
     let allOption = document.createElement("option");
-    allOption.textContent = "All";
+    allOption.textContent = "ALL";
     listOfLists.appendChild(allOption);
 }
 
