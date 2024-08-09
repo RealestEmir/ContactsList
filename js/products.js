@@ -51,35 +51,29 @@ function addProduct(){
             li.appendChild(button);
 
             wishList.appendChild(li);
-
-            if(newList.value === ''){
-                alert("You must write something");
+            
+            let listName = productList.value.toUpperCase();
+            let options = listOfLists.options;
+            let isDuplicate = false;
+    
+            for(let i = 0; i < options.length; i++){
+                if(options[i].value == listName){
+                    isDuplicate = true;
+                    break;
+                }
+            }
+    
+            if(isDuplicate){
+                alert("This list already exists");
             }
             else{
-                let listName = newList.value.toUpperCase();
-                let options = listOfLists.options;
-                let isDuplicate = false;
-        
-                for(let i = 0; i < options.length; i++){
-                    if(options[i].value == listName){
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-        
-                if(isDuplicate){
-                    alert("This list already exists");
-                }
-                else{
-                    let option = document.createElement("option");
-                    option.textContent = listName;
-                    option.value = listName;
-                    listOfLists.appendChild(option);
-                    saveData();
-                    newList.value = "";
-                }
+                let option = document.createElement("option");
+                option.textContent = listName;
+                option.value = listName;
+                listOfLists.appendChild(option);
+                saveData();
             }
-
+        
             saveData();
 
             productLink.value = "";
