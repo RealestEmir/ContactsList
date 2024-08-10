@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/Lists.css">
-    <link rel="stylesheet" href="/css/reset.css" type="text.css">
+    <link rel="stylesheet" href="/WishList/css/Lists.css">
+    <link rel="stylesheet" href="/WishList/css/reset.css" type="text.css">
     <title>Keepintabs-lists</title>
 </head>
 <body>
@@ -45,16 +45,19 @@
                 <fieldset>
                     <Legend>Lists</Legend>   
                     <label for="">Select List</label><br>
+                    <!--Drop down menu to select wishlists-->
                     <select name="list-list" id="list-list">
                         <option value="">All</option>
                     </select><br>
 
+                    <!--Removes all products in currently open wishlist-->
                     <div class = "display-wishlist">
                         <ul id="product-list">
                         </ul>
                         <button onclick="removeAll()">Remove all</button>
                     </div>
 
+                    <!--input fields for product info-->
                     <label for="">Product link</label><br>
                     <input type="text" name="link" id="link" placeholder="Paste url"><br>
                     <label for="">Product name</label><br>
@@ -79,6 +82,7 @@
         <article>
             <form action="" id="Create-List">
                 <fieldset>
+                    <!--Input field to create a wishlist-->
                     <legend>Create a list</legend>
                     <label for="">List name</label><br>
                     <input type="text" name="list" id="list" placeholder="Enter name"><br>
@@ -87,6 +91,7 @@
                 </fieldset>
             </form>
         </article>
+        <!--Both forms very rudimentary-->
     </section>
     <script src="/js/products.js"></script>
 </body>

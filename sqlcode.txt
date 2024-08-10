@@ -1,0 +1,11 @@
+Creating a table
+CREATE TABLE users (
+     PersonID int AUTO_INCREMENT PRIMARY KEY, 
+     Username varchar(255),
+    Email varchar(255), 
+    Password varchar(255) 
+);
+
+Adding values to a table 
+INSERT INTO users (Username, Email, Password)
+VALUES ('EmirAbdullah', 'emirabdullah17@outlook.com', 'Asmahan11!!')

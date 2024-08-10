@@ -1,3 +1,4 @@
+//Global variables taken from input boxes for product info
 const productLink = document.getElementById("link");
 const productName = document.getElementById("name");
 const productPrice = document.getElementById("price");
@@ -6,21 +7,27 @@ const productDescription = document.getElementById("description");
 const productList = document.getElementById("list-belonging");
 const wishList = document.getElementById("product-list");
 
+//Global variables for list creation
 const newList = document.getElementById("list");
 const listOfLists = document.getElementById("list-list");
 
 function addProduct(){
+    //Makes sure all necessary fields are filled in
     if(productLink.value === '' || productName.value === '' || productPrice.value === '' || productImage.value === '' || productList.value === ''){
         alert("This field is required");
     }
     else{
+        //FileReader allows for image files to be processed correctly
         const reader = new FileReader();
         reader.onload = function(e) {
             const imageSrc = e.target.result;
 
+            //Creates list element which contains product info
             let li = document.createElement("li");
             li.innerHTML = "";
             li.setAttribute("data-list", productList.value.toUpperCase());
+
+            //Product info
 
             let a = document.createElement("a");
             a.href = productLink.value;
@@ -42,6 +49,7 @@ function addProduct(){
             p3.innerHTML = productDescription;
             li.appendChild(p3);
 
+            //Button to remove specific product entry - currrently doesn't work
             let button = document.createElement("button");
             button.innerHTML = "Remove product";
             button.onclick =  function removeProduct(){
@@ -52,6 +60,8 @@ function addProduct(){
 
             wishList.appendChild(li);
             
+            //If list product belongs to doesn't exist the list will be created
+            //Added in capitals to decrease chance of duplicates
             let listName = productList.value.toUpperCase();
             let options = listOfLists.options;
             let isDuplicate = false;
@@ -76,6 +86,7 @@ function addProduct(){
         
             saveData();
 
+            //Clear input fields
             productLink.value = "";
             productName.value = "";
             productPrice.value = "";
@@ -88,11 +99,14 @@ function addProduct(){
     }
 }
 
+//Removes all list entries
 function removeAll(){
     wishList.innerHTML = "";
     saveData();
 }
 
+//Creates list, prevents duplicates
+//Added in capitals to decrease chance of duplicates
 function addList(){
     if(newList.value === ''){
         alert("You must write something");
@@ -123,6 +137,7 @@ function addList(){
     }
 }
 
+//Removes all lists
 function removeLists(){
     while (listOfLists.options.length > 0){
         listOfLists.remove(0);
@@ -130,11 +145,13 @@ function removeLists(){
     saveData();
 }
 
+//Data entered in website saved locally
 function saveData(){
     localStorage.setItem("data1", wishList.innerHTML);
     localStorage.setItem("data2", listOfLists.innerHTML);
 }
 
+//Makes sure there's always an All option even after list deletion
 function ensureAllOption(){
     const option = listOfLists.options;
     for (let i = 0; i < option.length; i++){
@@ -148,6 +165,7 @@ function ensureAllOption(){
     listOfLists.appendChild(allOption);
 }
 
+//Retrieves data saved locally
 function showTask(){
     wishList.innerHTML = localStorage.getItem("data1");
     listOfLists.innerHTML = localStorage.getItem("data2");
