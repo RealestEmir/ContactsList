@@ -19,7 +19,7 @@
             <nav id="nav">
                 <ul class="horizontal-list">
                     <li><a href="main.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                     <li><a href="Lists.html">Lists</a></li>
                 </ul>
             </nav>
@@ -29,19 +29,19 @@
 
     <section class="Container-2">
         <article>
-            <form action="" id="Sign-up">
+            <form action="perform-signup.php" method="post" id="Sign-up">
                 <fieldset>
                     <legend>Sign Up</legend>
                     <!--Input boxes to create an account-->
                     <label for="">Email</label><br>
-                    <input type="email" placeholder="Enter Email" required><br>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required><br>
                     <label for="">Username</label><br>
-                    <input type="text" placeholder="Create username" required><br>
+                    <input type="text" name="username" id="username" placeholder="Create username" required><br>
                     <label for="">Password</label><br>
-                    <input type="password" placeholder="Enter Password" required><br>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" required><br>
                     <label for="">Confirm Password</label><br>
-                    <input type="password" placeholder="Enter Password" required><br>
-                    <a href="login.html">Already have an account? Click here.</a><br>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Enter Password" required><br>
+                    <a href="login.php">Already have an account? Click here.</a><br>
                     <button type="submit">Sign up</button>
                 </fieldset>
             </form>
