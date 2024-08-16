@@ -1,17 +1,11 @@
 <?php
+    session_start();
     include "connection.php";
 
-    //If user is already logged in, redirect to Lists.html
-    if (isset($_SESSION['$email'])){
-        header("Location: Lists.html");
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE){
+        header("location: Lists.php");
         exit();
     }
-
-    //Get error message from session
-    $error_message = isset($_SESSION['error']) ? $_SESSION['error'] : null;
-
-    //Unset error message
-    unset($_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +28,10 @@
         <div>
             <nav id="nav">
                 <ul class="horizontal-list">
-                    <li><a href="main.html">Home</a></li>
+                    <li><a href="main.php">Home</a></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="Lists.html">Lists</a></li>
+                    <li><a href="Lists.php">Lists</a></li>
+                    <li><a href="profile.php">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -54,7 +49,7 @@
                     <label for="">Password</label><br>
                     <input type="password" name="password" id="password" placeholder="Enter Password" required><br>
                     <a href="">Forgot your details? Click here.</a><br>
-                    <a href="signup.html">Don't have an account yet? Click here.</a><br>
+                    <a href="signup.php">Don't have an account yet? Click here.</a><br>
                     <button type="submit">Login</button>
                 </fieldset>
             </form>

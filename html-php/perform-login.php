@@ -2,25 +2,37 @@
     session_start();
     include "connection.php";
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //Initialize variables from post data
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    if (!isset($_POST['email'], $_POST['password'])){
+        exit('Please fill both the username and password fields');
+    }
 
-        //create sql statement to check if login details matchup with table data
-        $sql = "select * from users where email = '$email' and password = '$password'";
-        $result = mysqli_query($conn, $sql);
+    if ($stmt = $conn->prepare("SELECT PersonID, Password FROM users WHERE Email = ?")){
+        $stmt->bind_param('s', $_POST['email']);
+        $stmt->execute();
+        $stmt->store_result();
 
-        if (mysqli_num_rows($result) > 0){
-            //If matching table data present, set session variables and redirect to Lists.html
-            $_SESSION['email'] = $email;
-            header("Location: Lists.html");
-            exit();
+        if ($stmt->num_rows() > 0){
+            $stmt->bind_result($PersonID, $Password);
+            $stmt->fetch();
+
+            if ($_POST['password'] === $Password){
+                session_regenerate_id();
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['PersonID'] = $PersonID;
+                header("Location: Lists.php");
+                exit();
+            }
+            else{
+                header("Location: login.php?error=IncorrectPassword");
+            }
         }
         else{
-            //If not matching table data present, set error message and redirect to login.php
-            $_SESSION['error'] = "Incorrect login details.";
-            header("Location: login.php");
-            exit();
+            header("Location: login.php?error=IncorrectPassword");
         }
+
+        $stmt->close();
+    }
+    
+    else{
+        exit('Failed to prepare SQL statement');
     }

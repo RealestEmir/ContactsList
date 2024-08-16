@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +23,10 @@
         <div>
             <nav id="nav">
                 <ul class="horizontal-list">
-                    <li><a href="main.html">Home</a></li>
+                    <li><a href="main.php">Home</a></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="Lists.html">Lists</a></li>
+                    <li><a href="Lists.php">Lists</a></li>
+                    <li><a href="profile.php">Profile</a></li>
                 </ul>
             </nav>
         </div>
