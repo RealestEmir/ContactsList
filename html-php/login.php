@@ -3,7 +3,7 @@
     include "connection.php";
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE){
-        header("location: Lists.php");
+        header("location: profile.php");
         exit();
     }
 ?>

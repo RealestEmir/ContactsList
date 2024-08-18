@@ -2,24 +2,34 @@
     session_start();
     include "connection.php";
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //Initialize variables from post data
-        $newEmail = $_POST['email'];
-        $username = $_POST['username'];
-        $newPassword = $_POST['password'];
-        $confirmPassword = $_POST['confirm-password'];
+    if (!isset($_POST['email'], $_POST['username'], $_POST['password'])){
+        exit('Please complete the registration form');
+    }
 
-        //Check if passwords are matching
-        if ($newPassword == $confirmPassword){
-            //sql statement to insert user info into the user table
-            $sql = "insert into users values ('', '$username', '$newEmail', '$newPassword')";
-            $result = mysqli_query($conn, $sql);
-            header("Location: login.php");
-            exit();
+    if (empty($_POST['email']) || empty($_POST['username']) || empty($_POST['password'])){
+        exit('Please complete the registration form');
+    }
+
+    if ($stmt = $conn->prepare('SELECT PersonID, Password FROM users WHERE Username = ?')){
+        $stmt->bind_param('s', $_POST['username']);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows() > 0){
+            echo 'Username exists, please choose another';
         }
         else{
-            $_SESSION['error'] = "Passwords do not match";
-            header("Location: signup.html");
-            exit();
+            if ($stmt = $conn->prepare('INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?)')){
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+                $stmt->execute();
+                header("location: login.php");
+            }
+            else {
+                echo 'Could not prepare a statement';
+            }
         }
     }
+    else{
+        echo 'Could not prepare a statement';
+    }
+    $conn->close();

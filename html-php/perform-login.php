@@ -15,11 +15,11 @@
             $stmt->bind_result($PersonID, $Password);
             $stmt->fetch();
 
-            if ($_POST['password'] === $Password){
+            if (password_verify($_POST['password'], $Password)){
                 session_regenerate_id();
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['PersonID'] = $PersonID;
-                header("Location: Lists.php");
+                header("Location: profile.php");
                 exit();
             }
             else{
