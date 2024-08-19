@@ -2,11 +2,13 @@
     session_start();
     include "connection.php";
 
+    //If user isn't logged in they are redirected to the login page
     if (!isset($_SESSION['loggedin'])){
         header('Location: login.php');
         exit;
     }
     
+    //Uses the session variable storing the user's id to find the user's details in the table
     $stmt = $conn->prepare('SELECT Password, Username, Email FROM users WHERE PersonID = ?');
     $stmt->bind_param('i', $_SESSION['PersonID']);
     $stmt->execute();
@@ -51,6 +53,7 @@
                 <table>
                     <tr>
                         <td>Username:</td>
+                        <!--Info from table displayed on page using htmlspecialchars-->
                         <td><?=htmlspecialchars($username, ENT_QUOTES)?></td>
                     </tr>
                     <tr>
@@ -65,6 +68,7 @@
             </article>
         </div>
 
+        <!--Logout button inside form which performs an action-->
         <form action="logout.php" method="post" id="logout">
             <fieldset>
                 <button type="submit">Logout</button>

@@ -2,6 +2,7 @@
     session_start();
     include "connection.php";
 
+    //If user is logged in they are redirected to the profile page
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE){
         header("location: profile.php");
         exit();

@@ -10,6 +10,13 @@ Adding values to a table
 INSERT INTO users (Username, Email, Password)
 VALUES ('EmirAbdullah', 'emirabdullah17@outlook.com', 'Asmahan11!!')
 
+Adding a table
+ALTER TABLE users ADD activation_code varchar(50) DEFAULT ''
+
+Removing a column
+ALTER TABLE users
+DROP COLUMN activation_code;
+
 old login.php code
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //Initialize variables from post data

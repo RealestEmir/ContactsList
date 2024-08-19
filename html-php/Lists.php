@@ -45,11 +45,11 @@
             </article>
         </div>
 
-        <!---<div id="add-list">
+        <div id="add-list">
             <article>
                 <a href="create-list.html">Click here to create a list</a>
             </article>
-        </div>--->
+        </div>
 
         <article>
             <form action="" id="Lists">
@@ -89,20 +89,6 @@
                 </fieldset>
             </form>
         </article>
-
-        <article>
-            <form action="" id="Create-List">
-                <fieldset>
-                    <!--Input field to create a wishlist-->
-                    <legend>Create a list</legend>
-                    <label for="">List name</label><br>
-                    <input type="text" name="list" id="list" placeholder="Enter name"><br>
-                    <button onclick="addList()">Add list</button><br>
-                    <button onclick="removeLists()">Remove all lists</button>
-                </fieldset>
-            </form>
-        </article>
-        <!--Both forms very rudimentary-->
     </section>
     <script src="/js/products.js"></script>
 </body>

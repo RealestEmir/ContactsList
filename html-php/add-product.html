@@ -45,16 +45,19 @@
                     <input type="number" name="price" id="price" min="0.00" step="0.01"><br>
                     <label for="">Product image</label><br>
                     <input type="file" name="image" id="image"><br>
-                    <!---<label for="">Product description (optional)</label><br>
+                    <label for="">Product description (optional)</label><br>
                     <input type="text" name="description" id="description"><br>
-                    <label for="">Select list</label><br>
+                    <label for="">Wishlist</label><br>
+                    <input type="text" name="list-belonging" id="list-belonging"><br>
+                    <!---<label for="">Select list</label><br>
                     <select name="" id="">
                         <option value=""></option>
                     </select><br>--->
-                    <button type="submit">Add product</button><br>
+                    <button onclick="addProduct()">Add product</button><br>
                 </fieldset>
             </form>
         </article>
     </section>
+    <script src="/WishList/js/products.js"></script>
 </body>
 </html>
