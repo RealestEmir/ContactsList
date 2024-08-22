@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/add-product.css">
+    <link rel="stylesheet" href="/WishList/css/reset.css">
+    <link rel="stylesheet" href="/WishList/css/add-product.css">
     <title>Keepintabs-add-products</title>
 </head>
 <body>
@@ -20,6 +21,7 @@
                     <li><a href="main.html">Home</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="Lists.html">Lists</a></li>
+                    <li><a href="profile.php">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +36,7 @@
         </div>
 
         <article>
-            <form action="" id="Lists">
+            <form action="product-to-wishlist.php" method="post" id="Lists">
                 <fieldset>
                     <legend>Add product</legend>
                     <label for="">Product link</label><br>
@@ -46,14 +48,14 @@
                     <label for="">Product image</label><br>
                     <input type="file" name="image" id="image"><br>
                     <label for="">Product description (optional)</label><br>
-                    <input type="text" name="description" id="description"><br>
+                    <input type="text" name="description" id="description" placeholder="(optional)"><br>
                     <label for="">Wishlist</label><br>
                     <input type="text" name="list-belonging" id="list-belonging"><br>
                     <!---<label for="">Select list</label><br>
                     <select name="" id="">
                         <option value=""></option>
                     </select><br>--->
-                    <button onclick="addProduct()">Add product</button><br>
+                    <button type="submit" name="submit" id="submit">Add product</button><br>
                 </fieldset>
             </form>
         </article>

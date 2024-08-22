@@ -45,9 +45,10 @@
             </article>
         </div>
 
-        <div id="add-list">
+        <div id="add">
             <article>
-                <a href="create-list.html">Click here to create a list</a>
+                <a href="create-list.html">Click here to create a list</a><br>
+                <a href="add-product.html">Click here to add a product</a><br>
             </article>
         </div>
 
@@ -67,29 +68,10 @@
                         </ul>
                         <button onclick="removeAll()">Remove all</button>
                     </div>
-
-                    <!--input fields for product info-->
-                    <label for="">Product link</label><br>
-                    <input type="text" name="link" id="link" placeholder="Paste url"><br>
-                    <label for="">Product name</label><br>
-                    <input type="text" name="name" id="name" placeholder="Enter name"><br>
-                    <label for="">Product price (£)</label><br>
-                    <input type="number" name="price" id="price" min="0.00" step="0.01"><br>
-                    <label for="">Product image</label><br>
-                    <input type="file" name="image" id="image"><br>
-                    <label for="">Product description (optional)</label><br>
-                    <input type="text" name="description" id="description"><br>
-                    <label for="">Wishlist</label><br>
-                    <input type="text" name="list-belonging" id="list-belonging"><br>
-                    <!---<label for="">Select list</label><br>
-                    <select name="" id="">
-                        <option value=""></option>
-                    </select><br>--->
-                    <button onclick="addProduct()">Add product</button><br>
                 </fieldset>
             </form>
         </article>
     </section>
-    <script src="/js/products.js"></script>
+    <!--<script src="/js/products.js"></script>-->
 </body>
 </html>
