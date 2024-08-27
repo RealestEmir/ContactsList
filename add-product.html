@@ -18,9 +18,9 @@
         <div>
             <nav id="nav">
                 <ul class="horizontal-list">
-                    <li><a href="main.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="Lists.html">Lists</a></li>
+                    <li><a href="main.php">Home</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="Lists.php">Lists</a></li>
                     <li><a href="profile.php">Profile</a></li>
                 </ul>
             </nav>
@@ -37,21 +37,21 @@
 
         <!--Input elements to enter product details-->
         <article>
-            <form action="product-to-wishlist.php" method="post" id="Lists">
+            <form action="product-to-wishlist.php" method="post" id="Lists" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Add product</legend>
                     <label for="">Product link</label><br>
-                    <input type="text" name="link" id="link" placeholder="Paste url"><br>
+                    <input type="text" name="link" id="link" placeholder="Paste url" required><br>
                     <label for="">Product name</label><br>
-                    <input type="text" name="name" id="name" placeholder="Enter name"><br>
+                    <input type="text" name="name" id="name" placeholder="Enter name" required><br>
                     <label for="">Product price (£)</label><br>
-                    <input type="number" name="price" id="price" min="0.00" step="0.01"><br>
+                    <input type="number" name="price" id="price" min="0.00" step="0.01" required><br>
                     <label for="">Product image</label><br>
-                    <input type="file" name="image" id="image"><br>
+                    <input type="file" name="image" id="image" required><br>
                     <label for="">Product description (optional)</label><br>
                     <input type="text" name="description" id="description" placeholder="(optional)"><br>
                     <label for="">Wishlist</label><br>
-                    <input type="text" name="list-belonging" id="list-belonging"><br>
+                    <input type="text" name="list-belonging" id="list-belonging" required><br>
                     <button type="submit" name="submit" id="submit">Add product</button><br>
                 </fieldset>
             </form>

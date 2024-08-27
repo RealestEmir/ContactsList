@@ -145,6 +145,10 @@ function removeLists(){
     saveData();
 }
 
+function changeWishlist(){
+    document.getElementById('Lists').submit();
+}
+
 //Data entered in website saved locally
 function saveData(){
     localStorage.setItem("data1", wishList.innerHTML);

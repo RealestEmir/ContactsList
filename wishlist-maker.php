@@ -1,5 +1,5 @@
 <?php
-    include "connection.php";
+    include "connection-2.php";
 
     //Prevents empty form submission
     if (!isset($_POST['inputName'])){
