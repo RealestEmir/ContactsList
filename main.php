@@ -33,7 +33,18 @@
     </div>
 
     <section class="Container-2">
+    <div id="count">
+            <article>
+                <p>You currently have: X Lists.</p>
+            </article>
+        </div>
 
+        <div id="add">
+            <article>
+                <a href="create-list.html">Click here to create a list</a><br>
+                <a href="add-product.html">Click here to add a product</a><br>
+            </article>
+        </div>
     </section>
 </body>
 </html>

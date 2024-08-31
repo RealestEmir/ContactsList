@@ -52,10 +52,10 @@ function addProduct(){
             //Button to remove specific product entry - currrently doesn't work
             let button = document.createElement("button");
             button.innerHTML = "Remove product";
-            button.onclick =  function removeProduct(){
-                li.remove();
-                saveData();
-            };
+            //button.onclick =  function removeProduct(){
+            //    li.remove();
+            //    saveData();
+            //};
             li.appendChild(button);
 
             wishList.appendChild(li);

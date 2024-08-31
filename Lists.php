@@ -18,9 +18,9 @@
                         );
     $stmt->bind_param('s', $databaseName);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $tableResult = $stmt->get_result();
 
-    $selectedList = 'null';
+    $selectedList = 'all';
     
     if(isset($_POST['list-list']) && $_POST['list-list'] != 'null'){
         $selectedList = $_POST['list-list'];
@@ -28,7 +28,7 @@
             $sql = "SELECT * FROM `all`";
         }
         else{
-
+            $sql = "SELECT * FROM `$selectedList`";
         }
     }
     else {
@@ -98,9 +98,12 @@
                     <label for="">Select List</label><br>
                     <!--Drop down menu to select wishlists-->
                     <select name="list-list" id="list-list" onchange="changeWishlist()">
+                        <option value="null">[PLEASE SELECT A LIST]</option>
                         <?php
-                            while ($row = $result->fetch_assoc()){
-                                echo "<option value='" . htmlspecialchars($row['TABLE_NAME']) . "'>" . htmlspecialchars($row['TABLE_NAME']) . "</option>";
+                            while ($row = $tableResult->fetch_assoc()){
+                                $tableName = $row['TABLE_NAME'];
+                                $isSelected = $selectedList == $tableName ? "selected" : "";
+                                echo "<option value='" . htmlspecialchars($tableName) . "'>" . htmlspecialchars($tableName) . "</option>";
                             }
                         ?>
                     </select><br>
@@ -115,6 +118,7 @@
                                             </a>';
                                         echo "<p>" . $products["price"] . "</p>";
                                         echo "<p>" . $products["description"] . "</p>";
+                                        echo '<button type="button" onclick="removeProduct()">Remove this product</button>';
                                     }
                                 }
                             ?>
@@ -123,6 +127,6 @@
             </form>
         </article>
     </section>
-    <script src="/js/products.js"></script> 
+    <script src="/WishList/js/script.js"></script> 
 </body>
 </html>
